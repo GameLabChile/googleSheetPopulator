@@ -1,0 +1,15 @@
+{
+  "name": "googlesheetpopulator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "jspopulator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ivesklein",
+  "license": "ISC",
+  "dependencies": {
+    "google-auth-library": "^9.13.0",
+    "google-spreadsheet": "^4.1.2"
+  }
+}
