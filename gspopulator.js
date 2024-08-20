@@ -3,13 +3,10 @@ const { google } = require('googleapis');
 const fs = require('fs');
 
 exports.authorizeAndInsertRow = async function authorizeAndInsertRow(spreadsheetId, sheetName, values) {
-  let credentials = {};
-  try {
-    credentials = JSON.parse(fs.readFileSync('service-account-key.json'));
-  } catch (e) {
-    console.error('Error reading credentials:', e);
-    return;
-  }
+  const credentials = {
+    client_email: process.env['GOOGLE_CLIENT_EMAIL'],
+    private_key: process.env['GOOGLE_PRIVATE_KEY']
+  };
 
   try {
     // Authenticate and get an OAuth2 token
