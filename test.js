@@ -22,6 +22,4 @@ if(typeof Meteor === "undefined"){
       console.error('Error inserting row:', err);
     });
 
-}else{
-  console.log("in Meteor");
 }

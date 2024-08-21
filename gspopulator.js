@@ -1,11 +1,11 @@
 const axios = require('axios');
 const { google } = require('googleapis');
-const fs = require('fs');
+const {private_key} = require('./key');
 
 exports.authorizeAndInsertRow = async function authorizeAndInsertRow(spreadsheetId, sheetName, values) {
   const credentials = {
     client_email: process.env['GOOGLE_CLIENT_EMAIL'],
-    private_key: process.env['GOOGLE_PRIVATE_KEY']
+    private_key: private_key
   };
 
   try {
