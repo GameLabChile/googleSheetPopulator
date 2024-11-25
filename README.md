@@ -2,8 +2,8 @@
 
 ## Config
 
-- Create the file `key.js` with the following content:
-  ```javascript
-  exports = {
-    "private_key": "..."
-  }
+- add the env vars:
+-- GOOGLE_SHEET
+-- GOOGLE_SHEET_USES_PAGE
+-- GOOGLE_CLIENT_EMAIL
+-- GOOGLE_PRIVATE_KEY

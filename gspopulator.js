@@ -1,18 +1,18 @@
 const axios = require('axios');
 const { google } = require('googleapis');
-const private_key = "";
 
-if(private_key===""){
-  throw new Error("google apis private key not configured. gspopulator.js:3");
-}
 if(!process.env['GOOGLE_CLIENT_EMAIL']){
   throw new Error("env var missing: GOOGLE_CLIENT_EMAIL");
+}
+
+if(!process.env['GOOGLE_PRIVATE_KEY']){
+  throw new Error("env var missing: GOOGLE_PRIVATE_KEY");
 }
 
 exports.authorizeAndInsertRow = async function authorizeAndInsertRow(spreadsheetId, sheetName, values) {
   const credentials = {
     client_email: process.env['GOOGLE_CLIENT_EMAIL'],
-    private_key: private_key
+    private_key: process.env['GOOGLE_PRIVATE_KEY'].replace(/_/g, ' ').replace(/\\n/g, '\n')
   };
 
   try {
