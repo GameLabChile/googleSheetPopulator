@@ -2,14 +2,16 @@ const axios = require('axios');
 const { google } = require('googleapis');
 
 if(!process.env['GOOGLE_CLIENT_EMAIL']){
-  throw new Error("env var missing: GOOGLE_CLIENT_EMAIL");
+  console.warn("env var missing: GOOGLE_CLIENT_EMAIL");
 }
 
 if(!process.env['GOOGLE_PRIVATE_KEY']){
-  throw new Error("env var missing: GOOGLE_PRIVATE_KEY");
+  console.warn("env var missing: GOOGLE_PRIVATE_KEY");
 }
 
 exports.authorizeAndInsertRow = async function authorizeAndInsertRow(spreadsheetId, sheetName, values) {
+  if (!process.env['GOOGLE_CLIENT_EMAIL'] || !process.env['GOOGLE_PRIVATE_KEY']) return;
+  
   const credentials = {
     client_email: process.env['GOOGLE_CLIENT_EMAIL'],
     private_key: process.env['GOOGLE_PRIVATE_KEY'].replace(/_/g, ' ').replace(/\\n/g, '\n')
